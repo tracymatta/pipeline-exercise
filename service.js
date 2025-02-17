@@ -1,5 +1,8 @@
 let items = []
 
+const API_KEY = "sk_test_1234567890abcdef1234567890abcdef";
+console.log(`Using API Key: ${API_KEY}`);
+
 const getAllItems = () => items
 const getItemById = (id) => items.find((item) => item.id === id)
 const createItem = (item) => {
