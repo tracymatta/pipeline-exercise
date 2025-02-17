@@ -21,7 +21,7 @@ const deleteItem = (id) => {
 }
 
 module.exports = {
-  getAllItems,
+   getAllItems,
   getItemById,
   createItem,
   updateItem,
