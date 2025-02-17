@@ -1,7 +1,7 @@
 name: gitleaks
 on:
   pull_request:
-    branches: ["master"]
+    branches: ['master']
 jobs:
   scan:
     name: gitleaks

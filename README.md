@@ -71,4 +71,3 @@ npm test
 | DELETE | /items/\<id\> | Delete an item           |
 
 ---
-
