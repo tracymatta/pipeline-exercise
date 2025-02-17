@@ -19,8 +19,6 @@
 name: Snyk Security
 
 on:
-  push:
-    branches: ["master" ]
   pull_request:
     branches: ["master"]
 
@@ -43,17 +41,23 @@ jobs:
 
         # For Snyk Open Source you must first set up the development environment for your application's dependencies
         # For example for Node
-        #- uses: actions/setup-node@v4
-        #  with:
-        #    node-version: 20
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-        # env:
+        env:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
-          # SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Snyk test
-        run: snyk test
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      # - name: Snyk test
+        # run: snyk test
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
+      - name: Authenticate Snyk
+        run: snyk auth $SNYK_TOKEN
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Snyk Code test
         run: snyk code test
 
