@@ -33,3 +33,7 @@ test('should delete an item', () => {
   expect(deleted).toBe(true)
   expect(service.getItemById(item.id)).toBeUndefined()
 })
+
+test('should fail', () => {
+  expect(true).toBe(false)
+})
